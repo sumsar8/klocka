@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="klocka">0</p>
+    <button onclick="reset()">Reset</button>
+    <button onclick="change()">Start/Stop</button>
+</body>
+<script>
+
+    setInterval(() => {
+        timer()
+    }, 1000);
+    function timer(){
+        localStorage.clock = Number(localStorage.clock) + 1;
+        document.getElementById("klocka").innerHTML = localStorage.clock;
+    }
+    function reset(){
+        localStorage.clock = 0;
+    }
+    var onoff;
+
+function change() {
+    if (!onoff) {
+        onoff = window.setInterval(stop,0,00000001);
+    } else {
+        window.clearInterval(onoff);
+        onoff = null;
+    }
+}
+    function stop(){
+        document.getElementById("klocka").innerHTML = 0;
+}
+</script>
+</html>
